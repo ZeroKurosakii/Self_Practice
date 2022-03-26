@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        int prefix[nums.size()];
+        prefix[0] = nums[0];
+        for(int i = 1 ; i < nums.size() ; i++){
+            prefix[i] = prefix[i-1] + nums[i];
+        }
+        int count = 0;
+        map<long long int , int > mymap;
+        mymap[0] = 1;
+        for(int i = 0 ; i < nums.size() ; i++){
+            count = count + mymap[prefix[i]-k];
+            ++mymap[prefix[i]];
+        }
+        return count;
+    }
+};
