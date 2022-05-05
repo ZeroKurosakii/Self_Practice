@@ -1,0 +1,32 @@
+//Coding by ZeroKurosakii
+//Author:張竣傑
+//NYCU dep. Civil Engineering
+//From LeetCode 202 Happy Number
+class Solution {
+public:
+    bool isHappy(int n) {
+        vector<int> check;
+        while(1){
+            if(n == 1){
+                break;
+            }
+            int tmp = count(check.begin() , check.end() , n);
+            if(tmp >= 1){
+                return false;
+            }
+            check.push_back(n);
+            n = happynumber(n);
+        }
+        return true;
+    }
+    
+    int happynumber(int a){
+        int ans = 0;
+        while(a != 0){
+            ans = ans + (a % 10) * (a % 10);
+            a /= 10;
+        }
+        return ans;
+    }
+};
+
