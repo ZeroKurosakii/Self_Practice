@@ -1,0 +1,27 @@
+//Author : ZeroKurosakii
+//張竣傑 @ National Yang Ming Chiao Tung University dep.civil engineering
+//Coding on 2022/5/13
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        vector<int> ans;
+        int len = numbers.size();
+        int i = 0 , j = len-1;
+        while(i < j){
+            int tmp = numbers[i] + numbers[j];
+            if(tmp == target){
+                ans.push_back(i+1);
+                ans.push_back(j+1);
+                break;
+            }
+            else if(tmp < target){
+                i++;
+            }
+            else{
+                j--;
+            }
+        }
+        return ans;
+    }
+};
