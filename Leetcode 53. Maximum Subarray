@@ -1,0 +1,20 @@
+//Author : ZeroKurosakii
+//張竣傑 @ National Yang Ming Chiao Tung University dep.civil engineering
+//Coding on 2022/5/10
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+        int len = nums.size();
+        int max_cur = nums[0];
+        int max_glo = nums[0];
+        for(int i = 1 ; i < len ; i++){
+            max_cur = max(nums[i], max_cur + nums[i]);
+            max_glo = max(max_glo, max_cur);
+        }
+        return max_glo;
+    }
+};
