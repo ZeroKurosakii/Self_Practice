@@ -1,0 +1,23 @@
+//Author : ZeroKurosakii
+//張竣傑 @ National Yang Ming Chiao Tung University dep.civil engineering
+//Coding on 2022/5/10
+
+class Solution {
+public:
+    int maxSubarraySumCircular(vector<int>& nums) {
+        int len = nums.size();
+        int max_cur , max_glo , min_cur , min_glo , total;
+        max_cur = max_glo = min_cur = min_glo = total = nums[0];
+        for(int i = 1 ; i < len ; i++){
+            max_cur = max(nums[i], max_cur+nums[i]);
+            max_glo = max(max_glo,max_cur);
+            min_cur = min(nums[i], min_cur+nums[i]);
+            min_glo = min(min_glo,min_cur);
+            total = total + nums[i];
+        }
+        if(min_glo == min_cur){
+            return max_glo;
+        }
+        return max(max_glo, total-min_glo);
+    }
+};
