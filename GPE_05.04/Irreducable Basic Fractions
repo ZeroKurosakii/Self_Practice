@@ -1,0 +1,33 @@
+//Coding by ZeroKurosakii
+//Author:張竣傑
+//NYCU dep. Civil Engineering
+//From UVa 10179 - Irreducable Basic Fractions
+
+#include<bits/stdc++.h>
+using namespace std;
+int Euler(int n){
+	int rea = n;
+	for(int i = 2 ; i * i <= n ; i++){
+		if(n % i == 0){
+			rea = rea - rea / i;
+			while(n % i == 0){
+				n = n / i;
+			}
+		}
+	}
+	if(n > 1){
+		rea = rea - rea/n;
+	}
+	return rea;
+}
+int main(void){
+	int number;
+	while(cin >> number){
+		if(number == 0){
+			break;
+		}
+		int total = Euler(number);
+		cout << total <<"\n";
+		
+	}
+} 
