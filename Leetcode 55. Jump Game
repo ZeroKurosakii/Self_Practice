@@ -1,0 +1,17 @@
+//Author : ZeroKurosakii
+//張竣傑 @ National Yang Ming Chiao Tung University dep.civil engineering
+//Coding on 2022/5/10
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int len = nums.size();
+        vector<int> dp(len , 0);
+        for(int i = 1 ; i < len ; i++){
+            dp[i] = max(dp[i-1], nums[i-1]) - 1;
+            if(dp[i] < 0){
+                return false;
+            }
+        }
+        return true;
+    }
+};
