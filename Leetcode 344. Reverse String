@@ -1,0 +1,13 @@
+//Author : ZeroKurosakii
+//張竣傑 @ National Yang Ming Chiao Tung University dep.civil engineering
+//Coding on 2022/5/14
+
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int len = s.size();
+        for(int i = 0 , j = len-1 ; i <= j ; i++ , j--){
+            swap(s[i],s[j]);
+        }
+    }
+};
