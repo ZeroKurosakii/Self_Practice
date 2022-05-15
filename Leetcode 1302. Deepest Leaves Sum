@@ -1,0 +1,39 @@
+//Author : ZeroKurosakii
+//張竣傑 @ National Yang Ming Chiao Tung University dep.civil engineering
+//Coding on 2022/5/15
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int deepestLeavesSum(TreeNode* root) {
+        vector<vector<TreeNode*>> levels;
+        dfs(root , 0 , levels);
+        int sum = 0;
+        int len = levels.size();
+        for(int i = 0 ; i < levels[len-1].size() ; i++){
+            sum = sum + levels[len-1][i]->val;
+        }
+        return sum;
+    }
+    void dfs(TreeNode* root , int d , vector<vector<TreeNode*>> &levels){
+        if(root == nullptr){
+            return ;
+        }
+        if(levels.size() < d+1){
+            levels.push_back({});
+        }
+        levels[d].push_back(root);
+        dfs(root->left , d + 1 , levels);
+        dfs(root->right , d + 1 , levels);
+    }
+};
