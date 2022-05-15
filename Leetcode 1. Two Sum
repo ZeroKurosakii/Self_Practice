@@ -1,0 +1,26 @@
+//Author : ZeroKurosakii
+//張竣傑 @ National Yang Ming Chiao Tung University dep.civil engineering
+//Coding on 2022/5/15
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int , int>mymap;
+        int len = nums.size();
+        for(int i = 0 ; i < len ; i++){
+            mymap[nums[i]] = i;
+        }
+        vector<int> ans;
+        for(int i = 0 ; i < len ; i++){
+            if(mymap.find(target-nums[i]) != mymap.end()){
+                if(i == mymap[target-nums[i]]){
+                    continue;
+                }
+                ans.push_back(i);
+                ans.push_back(mymap[target-nums[i]]);
+                return ans;
+            }
+        }
+        return ans;
+    }
+};
