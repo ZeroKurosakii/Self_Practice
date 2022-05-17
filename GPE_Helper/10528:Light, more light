@@ -1,0 +1,23 @@
+//Coding by ZeroKurosakii
+//Author:張竣傑
+//NYCU dep. Civil Engineering
+//From UVa 10110 - Light, more light
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(void){
+	long long int num ;
+	while(cin >> num){
+		if(num == 0){
+			break;
+		}
+		long long int tmp = sqrt(num);
+		tmp = tmp * tmp;
+		if(tmp == num){
+			cout <<"yes\n";
+		}
+		else{
+			cout <<"no\n";
+		}
+	}
+}
