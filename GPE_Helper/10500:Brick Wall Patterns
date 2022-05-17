@@ -1,0 +1,22 @@
+//Coding by ZeroKurosakii
+//Author:張竣傑
+//NYCU dep. Civil Engineering
+//From UVa 900 - Brick Wall Patterns
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(void){
+	long long int dp[51];
+	dp[0] = 1;
+	dp[1] = 1;
+	for(int i = 2 ; i < 51 ; i++){
+		dp[i] = dp[i-1] + dp[i-2];
+	}
+	int num;
+	while(cin>> num){
+		if(num == 0){
+			break;
+		}
+		cout << dp[num] <<"\n";
+	}
+}
