@@ -1,0 +1,75 @@
+//Coding by ZeroKurosakii
+//Author:張竣傑
+//NYCU dep. Civil Engineering
+//From UVa 10189 - Minesweeper
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(void){
+    int m , n;
+	  int kase = 1;
+	  while(cin >> m >> n){
+		  if(m == 0 && n == 0){
+			  break;
+		  }
+		char area[m][n];
+		for(int i = 0 ; i < m ; i++){
+			 for(int j = 0 ; j < n ; j++){
+			    cin >> area[i][j];
+			  }
+		}
+		char mine[m][n]={'\0'};
+		int ways[8][2]={{-1,1},{-1,0},{-1,-1},{0,1},{0,-1},{1,1},{1,0},{1,-1}};
+		/*
+		for(int i = 0 ; i < 8 ; i++){
+			for(int j = 0 ; j < 2 ; j++){
+				cout << ways[i][j] <<" ";
+			}
+			cout <<"\n";
+		}*/
+		/*
+		for(int i = 0 ; i < m ; i++){
+			for(int j = 0 ; j < n ; j++){
+				cout << area[i][j] <<" ";
+			}
+			cout <<"\n";
+		}
+		*/
+		if(kase != 1){
+			cout<<"\n";
+		}
+		cout <<"Field #"<<kase++<<":\n";
+		for(int i = 0 ; i < m ; i++){
+			for(int j = 0 ; j < n ; j++){
+				if(area[i][j] == '*'){
+					cout <<"*";
+					//cout <<i<<j<<"\n";
+				}
+				else{
+					int to_count = 0;
+					for(int k = 0 ; k < 8 ; k++){
+						if(i+ways[k][0] < 0 || i + ways[k][0] >= m || j + ways[k][1]< 0 || j + ways[k][1] >= n){
+							continue;
+						}
+						if(area[i+ways[k][0]][j+ways[k][1]] == '*'){
+							to_count++;
+						}
+					}
+					cout <<to_count;
+				}
+			}
+			cout<<"\n";
+		}
+		/*
+		for(int i = 0 ; i < m ; i++){
+			for(int j = 0 ; j < n ; j++){
+				cout << mine[i][j] <<" ";
+			}
+			cout <<"\n";
+		}
+		*/
+	}
+	
+	
+	return 0;
+}
